@@ -1,0 +1,25 @@
+// ======================
+// PRUEBAS CON console.log
+// ======================
+
+let texto = "Hola Mundo. Esto es una prueba 123!";
+
+// Llamadas a las funciones
+console.log("Palabras:", contarPalabras(texto));
+console.log("Signos de puntuación:", contarSignos(texto));
+console.log("Vocales:", contarVocales(texto));
+console.log("Consonantes:", contarConsonantes(texto));
+console.log("Dígitos:", contarDigitos(texto));
+console.log("Palabras con mayúscula:", palabrasMayuscula(texto));
+console.log("Palabras con minúscula:", palabrasMinuscula(texto));
+console.log("Párrafos:", contarParrafos(texto));
+console.log("Invertido:", invertirTexto(texto));
+console.log("Total caracteres:", totalCaracteres(texto));
+console.log("¿Contiene 'Mundo'?:", buscarPalabra(texto, "Mundo"));
+console.log("Veces aparece 'o':", contarCaracter(texto, 'o'));
+console.log("Caracteres en posiciones pares:", contarPares(texto));
+console.log("Caracteres en posiciones impares:", contarImpares(texto));
+
+let agregado = agregarTexto(texto, "INICIO_FIN");
+console.log("Texto al inicio:", agregado.inicio);
+console.log("Texto al final:", agregado.final);
