@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página -->
     <title>Mini Word</title>
+    <!-- Estilos y diseño de la página -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
+    <!-- Contenedor principal de la página -->
     <div class="container">
+        <!-- Encabezado de la página -->
         <h1>Mini Word</h1>
-
+        <!-- Área donde el usuario escribe el texto -->
         <textarea id="texto" placeholder="Escribe aquí tu texto..."></textarea>
-
+        <!-- Botones que ejecutan las funciones -->
         <div class="buttons">
+            <!-- Cada botón llama a la función "mostrarResultado" enviándole un tipo de acción diferente -->
             <button onclick="mostrarResultado('palabras')">Contar Palabras</button>
             <button onclick="mostrarResultado('signos')">Signos</button>
             <button onclick="mostrarResultado('vocales')">Vocales</button>
@@ -32,10 +37,12 @@
         </div>
     </div>
     
+    <!-- Contenedor secundario donde se muestra el resultado final -->
     <div id="resultado-container">
         <div id="res"></div>
     </div>
-
+    
+    <!-- Archivo JavaScript que contiene todas las funciones -->
     <script src="script.js"></script>
 </body>
 </html>
