@@ -1,69 +1,4 @@
 // ===============================================
-// CONTROLADOR PRINCIPAL PARA MOSTRAR RESULTADOS
-// ===============================================
-function mostrarResultado(accion) {
-    let texto = document.getElementById("texto").value;
-    let resDiv = document.getElementById("res");
-    let resultado = "";
-
-    switch (accion) {
-
-        case "palabras":
-            resultado = "Total de palabras: " + contarPalabras(texto);
-            break;
-
-        case "signos":
-            resultado = "Signos de puntuación: " + contarSignos(texto);
-            break;
-
-        case "vocales":
-            resultado = "Vocales: " + contarVocales(texto);
-            break;
-
-        case "consonantes":
-            resultado = "Consonantes: " + contarConsonantes(texto);
-            break;
-
-        case "digitos":
-            resultado = "Dígitos: " + contarDigitos(texto);
-            break;
-
-        case "mayusculas":
-            resultado = "Palabras que empiezan en MAYÚSCULA: " + palabrasMayuscula(texto);
-            break;
-
-        case "minusculas":
-            resultado = "Palabras que empiezan en minúscula: " + palabrasMinuscula(texto);
-            break;
-
-        case "parrafos":
-            resultado = "Párrafos: " + contarParrafos(texto);
-            break;
-
-        case "invertir":
-            resultado = "Invertido: " + invertirTexto(texto);
-            break;
-
-        case "caracteres":
-            resultado = "Total caracteres: " + totalCaracteres(texto);
-            break;
-
-        case "pares":
-            resultado = "Caracteres en posiciones PARES: " + contarPares(texto);
-            break;
-
-        case "impares":
-            resultado = "Caracteres en posiciones IMPARES: " + contarImpares(texto);
-            break;
-
-        default:
-            resultado = "Acción no reconocida.";
-    }
-
-    resDiv.innerHTML = resultado;
-}
-
-// ===============================================
 // 1. CONTAR PALABRAS
 // ===============================================
 function contarPalabras(texto) {
@@ -73,7 +8,7 @@ function contarPalabras(texto) {
             palabras++;
         }
     }
-    if (texto.length > 0) palabras++; 
+    if (texto.length > 0) palabras++;
     return palabras;
 }
 
@@ -85,9 +20,7 @@ function contarSignos(texto) {
     const lista = ['.', ',', ';', ':', '!', '?', '¿', '¡', '"'];
     for (let i = 0; i < texto.length; i++) {
         for (let j = 0; j < lista.length; j++) {
-            if (texto[i] === lista[j]) {
-                signos++;
-            }
+            if (texto[i] === lista[j]) signos++;
         }
     }
     return signos;
@@ -134,7 +67,7 @@ function contarDigitos(texto) {
 }
 
 // ===============================================
-// 6. PALABRAS QUE EMPIEZAN EN MAYÚSCULA
+// 6. PALABRAS MAYÚSCULA
 // ===============================================
 function palabrasMayuscula(texto) {
     let contador = 0;
@@ -147,7 +80,7 @@ function palabrasMayuscula(texto) {
 }
 
 // ===============================================
-// 7. PALABRAS QUE EMPIEZAN EN MINÚSCULA
+// 7. PALABRAS MINÚSCULA
 // ===============================================
 function palabrasMinuscula(texto) {
     let contador = 0;
@@ -179,14 +112,14 @@ function invertirTexto(texto) {
 }
 
 // ===============================================
-// 10. TOTAL DE CARACTERES
+// 10. TOTAL CARACTERES
 // ===============================================
 function totalCaracteres(texto) {
     return texto.length;
 }
 
 // ===============================================
-// 11. BUSCAR PALABRA EN EL TEXTO
+// 11. BUSCAR PALABRA
 // ===============================================
 function buscarPalabra(texto, buscar) {
     let palabra = "";
@@ -203,7 +136,7 @@ function buscarPalabra(texto, buscar) {
 }
 
 // ===============================================
-// 12. CONTAR OCURRENCIAS DE UN CARÁCTER
+// 12. CONTAR CARÁCTER
 // ===============================================
 function contarCaracter(texto, char) {
     let contador = 0;
@@ -212,7 +145,7 @@ function contarCaracter(texto, char) {
 }
 
 // ===============================================
-// 13. CARACTERES EN POSICIONES PARES
+// 13. POSICIONES PARES
 // ===============================================
 function contarPares(texto) {
     let pares = 0;
@@ -221,7 +154,7 @@ function contarPares(texto) {
 }
 
 // ===============================================
-// 14. CARACTERES EN POSICIONES IMPARES
+// 14. POSICIONES IMPARES
 // ===============================================
 function contarImpares(texto) {
     let impares = 0;
@@ -238,3 +171,62 @@ function agregarTexto(texto, fragmento) {
     return { inicio: alInicio, final: alFinal };
 }
 
+// =====================================================
+// FUNCIONES QUE CONTROLAN LOS BOTONES DEL HTML
+// =====================================================
+function mostrarResultado(accion) {
+    let texto = document.getElementById("texto").value;
+    let resDiv = document.getElementById("res");
+    let resultado = "";
+
+    switch (accion) {
+        case "palabras": resultado = "Total palabras: " + contarPalabras(texto); break;
+        case "signos": resultado = "Signos de puntuación: " + contarSignos(texto); break;
+        case "vocales": resultado = "Vocales: " + contarVocales(texto); break;
+        case "consonantes": resultado = "Consonantes: " + contarConsonantes(texto); break;
+        case "digitos": resultado = "Dígitos: " + contarDigitos(texto); break;
+        case "mayusculas": resultado = "Palabras en MAYÚSCULA: " + palabrasMayuscula(texto); break;
+        case "minusculas": resultado = "Palabras en minúscula: " + palabrasMinuscula(texto); break;
+        case "parrafos": resultado = "Párrafos: " + contarParrafos(texto); break;
+        case "invertir": resultado = invertirTexto(texto); break;
+        case "caracteres": resultado = "Caracteres: " + totalCaracteres(texto); break;
+        case "pares": resultado = "Posiciones pares: " + contarPares(texto); break;
+        case "impares": resultado = "Posiciones impares: " + contarImpares(texto); break;
+    }
+
+    resDiv.innerHTML = resultado;
+}
+
+function buscarPalabraUsuario() {
+    let texto = document.getElementById("texto").value;
+    let buscar = prompt("Ingresa la palabra:");
+    if (!buscar) return;
+
+    let encontrado = buscarPalabra(texto, buscar);
+    document.getElementById("res").innerHTML =
+        encontrado ? `La palabra "${buscar}" está en el texto.` :
+                     `La palabra "${buscar}" NO está en el texto.`;
+}
+
+function contarCaracterUsuario() {
+    let texto = document.getElementById("texto").value;
+    let char = prompt("Ingresa un carácter:");
+    if (!char || char.length !== 1) {
+        alert("Debes ingresar 1 solo carácter.");
+        return;
+    }
+
+    let cantidad = contarCaracter(texto, char);
+    document.getElementById("res").innerHTML =
+        `El carácter "${char}" aparece ${cantidad} veces.`;
+}
+
+function agregarTextoUsuario() {
+    let texto = document.getElementById("texto").value;
+    let frag = prompt("Texto a agregar:");
+    if (!frag) return;
+
+    let res = agregarTexto(texto, frag);
+    document.getElementById("res").innerHTML =
+        `<b>Al inicio:</b> ${res.inicio}<br><br><b>Al final:</b> ${res.final}`;
+}
